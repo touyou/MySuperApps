@@ -28,5 +28,11 @@ struct MySuperAppsApp: App {
             ContentView()
         }
         .modelContainer(sharedModelContainer)
+        .windowResizability(.contentSize)
+        #if os(visionOS)
+        ImmersiveSpace(id: "ImmersiveSpace") {
+            EmptyView()
+        }
+        #endif
     }
 }

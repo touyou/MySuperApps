@@ -12,6 +12,7 @@
 		2CEEBF162BAFEEB900D7FFE4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEEBF152BAFEEB900D7FFE4 /* Item.swift */; };
 		2CEEBF182BAFEEBC00D7FFE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CEEBF172BAFEEBC00D7FFE4 /* Assets.xcassets */; };
 		2CEEBF1C2BAFEEBC00D7FFE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CEEBF1B2BAFEEBC00D7FFE4 /* Preview Assets.xcassets */; };
+		2CEEBF242BAFF11200D7FFE4 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2CEEBF232BAFF11200D7FFE4 /* AppFeature */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2CEEBF242BAFF11200D7FFE4 /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +42,7 @@
 			children = (
 				2CEEBF102BAFEEB900D7FFE4 /* MySuperApps */,
 				2CEEBF0F2BAFEEB900D7FFE4 /* Products */,
+				2CEEBF222BAFF11200D7FFE4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -72,6 +75,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		2CEEBF222BAFF11200D7FFE4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -88,6 +98,9 @@
 			dependencies = (
 			);
 			name = MySuperApps;
+			packageProductDependencies = (
+				2CEEBF232BAFF11200D7FFE4 /* AppFeature */,
+			);
 			productName = MySuperApps;
 			productReference = 2CEEBF0E2BAFEEB900D7FFE4 /* MySuperApps.app */;
 			productType = "com.apple.product-type.application";
@@ -296,10 +309,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.touyou.MySuperApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Debug;
 		};
@@ -334,10 +348,11 @@
 				PRODUCT_BUNDLE_IDENTIFIER = dev.touyou.MySuperApps;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Release;
 		};
@@ -363,6 +378,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2CEEBF232BAFF11200D7FFE4 /* AppFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppFeature;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 2CEEBF062BAFEEB900D7FFE4 /* Project object */;
 }
