@@ -11,6 +11,9 @@ let package = Package(
         .library(
             name: "AppFeature",
             targets: ["AppFeature"]),
+        .library(
+            name: "SharedModels",
+            targets: ["SharedModels"]),
     ],
     dependencies: [
       .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.9.1"),
@@ -19,7 +22,13 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "AppFeature"),
+            name: "AppFeature",
+            dependencies: [
+                "SharedModels"
+            ]
+        ),
+        .target(
+            name: "SharedModels"),
         .target(
             name: "SwiftDataClient",
             dependencies: [

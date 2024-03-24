@@ -8,18 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		2CEEBF122BAFEEB900D7FFE4 /* MySuperAppsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEEBF112BAFEEB900D7FFE4 /* MySuperAppsApp.swift */; };
-		2CEEBF142BAFEEB900D7FFE4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEEBF132BAFEEB900D7FFE4 /* ContentView.swift */; };
-		2CEEBF162BAFEEB900D7FFE4 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CEEBF152BAFEEB900D7FFE4 /* Item.swift */; };
 		2CEEBF182BAFEEBC00D7FFE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CEEBF172BAFEEBC00D7FFE4 /* Assets.xcassets */; };
 		2CEEBF1C2BAFEEBC00D7FFE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CEEBF1B2BAFEEBC00D7FFE4 /* Preview Assets.xcassets */; };
 		2CEEBF242BAFF11200D7FFE4 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2CEEBF232BAFF11200D7FFE4 /* AppFeature */; };
+		2CEEBF262BAFF4C500D7FFE4 /* SharedModels in Frameworks */ = {isa = PBXBuildFile; productRef = 2CEEBF252BAFF4C500D7FFE4 /* SharedModels */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2CEEBF0E2BAFEEB900D7FFE4 /* MySuperApps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySuperApps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CEEBF112BAFEEB900D7FFE4 /* MySuperAppsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySuperAppsApp.swift; sourceTree = "<group>"; };
-		2CEEBF132BAFEEB900D7FFE4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		2CEEBF152BAFEEB900D7FFE4 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		2CEEBF172BAFEEBC00D7FFE4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CEEBF192BAFEEBC00D7FFE4 /* MySuperApps.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MySuperApps.entitlements; sourceTree = "<group>"; };
 		2CEEBF1B2BAFEEBC00D7FFE4 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -31,6 +28,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CEEBF242BAFF11200D7FFE4 /* AppFeature in Frameworks */,
+				2CEEBF262BAFF4C500D7FFE4 /* SharedModels in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,8 +56,6 @@
 			isa = PBXGroup;
 			children = (
 				2CEEBF112BAFEEB900D7FFE4 /* MySuperAppsApp.swift */,
-				2CEEBF132BAFEEB900D7FFE4 /* ContentView.swift */,
-				2CEEBF152BAFEEB900D7FFE4 /* Item.swift */,
 				2CEEBF172BAFEEBC00D7FFE4 /* Assets.xcassets */,
 				2CEEBF192BAFEEBC00D7FFE4 /* MySuperApps.entitlements */,
 				2CEEBF1A2BAFEEBC00D7FFE4 /* Preview Content */,
@@ -100,6 +96,7 @@
 			name = MySuperApps;
 			packageProductDependencies = (
 				2CEEBF232BAFF11200D7FFE4 /* AppFeature */,
+				2CEEBF252BAFF4C500D7FFE4 /* SharedModels */,
 			);
 			productName = MySuperApps;
 			productReference = 2CEEBF0E2BAFEEB900D7FFE4 /* MySuperApps.app */;
@@ -155,8 +152,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CEEBF142BAFEEB900D7FFE4 /* ContentView.swift in Sources */,
-				2CEEBF162BAFEEB900D7FFE4 /* Item.swift in Sources */,
 				2CEEBF122BAFEEB900D7FFE4 /* MySuperAppsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -383,6 +378,10 @@
 		2CEEBF232BAFF11200D7FFE4 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
+		};
+		2CEEBF252BAFF4C500D7FFE4 /* SharedModels */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SharedModels;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

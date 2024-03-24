@@ -7,6 +7,8 @@
 
 import SwiftUI
 import SwiftData
+import AppFeature
+import SharedModels
 
 @main
 struct MySuperAppsApp: App {
