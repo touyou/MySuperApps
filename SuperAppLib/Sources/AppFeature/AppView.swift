@@ -16,11 +16,11 @@ public struct AppView: View {
       List(selection: $store.destinationTag) {
         ForEach(AppReducer.State.DestinationTag.allCases, id: \.self) { value in
           NavigationLink(value: value) {
-            Text(value.rawValue.capitalized)
+            Text(value.rawValue)
           }
         }
       }
-      .navigationTitle("Apps")
+      .navigationTitle(String(localized: "Apps", bundle: .module))
 #if os(macOS)
       .navigationSplitViewColumnWidth(min: 180, ideal: 200)
 #endif
@@ -34,5 +34,5 @@ public struct AppView: View {
 }
 
 #Preview {
-    AppView(store: Store(initialState: AppReducer.State(), reducer: AppReducer.init))
+  AppView(store: .init(initialState: .init(), reducer: AppReducer.init))
 }

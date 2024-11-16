@@ -45,6 +45,6 @@ public struct ClockView: View {
 
 #Preview {
   ClockView(
-    store: Store(initialState: ClockReducer.State(), reducer: ClockReducer.init)
+    store: .init(initialState: .init(), reducer: ClockReducer.init)
   )
 }

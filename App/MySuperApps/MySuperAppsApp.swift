@@ -9,7 +9,6 @@ import SwiftUI
 import SwiftData
 import AppFeature
 import SharedModels
-import ComposableArchitecture
 
 @main
 struct MySuperAppsApp: App {
@@ -28,7 +27,7 @@ struct MySuperAppsApp: App {
 
     var body: some Scene {
         WindowGroup {
-          AppView(store: Store(initialState: AppReducer.State(), reducer: AppReducer.init))
+          AppView(store: .init(initialState: .init(), reducer: AppReducer.init))
         }
         .modelContainer(sharedModelContainer)
         .windowResizability(.contentSize)
