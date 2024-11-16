@@ -33,7 +33,7 @@ public struct AppFeatureView: View {
       //      }
     } detail: {
       switch store.state.destinationTag {
-      case .clock: ClockFeatureView()
+      case .clock: ClockFeatureView(store: store.scope(state: \.clock, action: \.clock))
       case .none: EmptyView()
       }
     }
