@@ -8,17 +8,42 @@ public struct ClockFeature: Reducer, Sendable {
     public init() {}
     
     var currentTime: Date = .now
+    var isTickVisible: Bool = true
+    
+    private var hour: Int { Calendar.current.component(.hour, from: currentTime) }
+    
+    private var minute: Int { Calendar.current.component(.minute, from: currentTime) }
+    
+    private var second: Int { Calendar.current.component(.second, from: currentTime) }
     
     var hourClockAngle: Double {
-      Double(Calendar.current.component(.hour, from: currentTime)) * 30 + Double(Calendar.current.component(.minute, from: currentTime)) * 0.5
+      Double(hour) * 30 + Double(minute) * 0.5
     }
     
     var minuteClockAngle: Double {
-      Double(Calendar.current.component(.minute, from: currentTime)) * 6
+      Double(minute) * 6
     }
     
     var secondClockAngle: Double {
-      Double(Calendar.current.component(.second, from: currentTime)) * 6
+      Double(second) * 6
+    }
+    
+    private var hourString: String {
+      currentTime.formatted(.dateTime.hour(.twoDigits(amPM: .omitted)))
+    }
+    
+    private var minuteString: String {
+      currentTime.formatted(.dateTime.minute(.twoDigits))
+    }
+    
+    private var secondString: String {
+      currentTime.formatted(.dateTime.second(.twoDigits))
+    }
+    
+    var timeText: String {
+//      isTickVisible ?
+      "\(hourString):\(minuteString):\(secondString)"
+//      : "\(hourString) \(minuteString) \(secondString)"
     }
   }
   
@@ -36,12 +61,13 @@ public struct ClockFeature: Reducer, Sendable {
       switch action {
       case .onAppear:
         return .run { send in
-          for await _ in clock.timer(interval: .seconds(1)) {
+          for await _ in clock.timer(interval: .seconds(0.5)) {
             await send(.updateTime(.now))
           }
         }
       case .updateTime(let date):
         state.currentTime = date
+        state.isTickVisible.toggle()
         return .none
       }
     }
