@@ -12,6 +12,7 @@
 		2CEEBF1C2BAFEEBC00D7FFE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CEEBF1B2BAFEEBC00D7FFE4 /* Preview Assets.xcassets */; };
 		2CEEBF242BAFF11200D7FFE4 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2CEEBF232BAFF11200D7FFE4 /* AppFeature */; };
 		2CEEBF262BAFF4C500D7FFE4 /* SharedModels in Frameworks */ = {isa = PBXBuildFile; productRef = 2CEEBF252BAFF4C500D7FFE4 /* SharedModels */; };
+		46A0A24A2CE841C400641380 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 46A0A2492CE841C400641380 /* ComposableArchitecture */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 			files = (
 				2CEEBF242BAFF11200D7FFE4 /* AppFeature in Frameworks */,
 				2CEEBF262BAFF4C500D7FFE4 /* SharedModels in Frameworks */,
+				46A0A24A2CE841C400641380 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,6 +99,7 @@
 			packageProductDependencies = (
 				2CEEBF232BAFF11200D7FFE4 /* AppFeature */,
 				2CEEBF252BAFF4C500D7FFE4 /* SharedModels */,
+				46A0A2492CE841C400641380 /* ComposableArchitecture */,
 			);
 			productName = MySuperApps;
 			productReference = 2CEEBF0E2BAFEEB900D7FFE4 /* MySuperApps.app */;
@@ -110,7 +113,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1530;
-				LastUpgradeCheck = 1530;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					2CEEBF0D2BAFEEB900D7FFE4 = {
 						CreatedOnToolsVersion = 15.3;
@@ -126,6 +129,9 @@
 				Base,
 			);
 			mainGroup = 2CEEBF052BAFEEB900D7FFE4;
+			packageReferences = (
+				46A0A2482CE841C400641380 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			productRefGroup = 2CEEBF0F2BAFEEB900D7FFE4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -193,6 +199,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -254,6 +261,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -281,6 +289,7 @@
 				CODE_SIGN_ENTITLEMENTS = MySuperApps/MySuperApps.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MySuperApps/Preview Content\"";
 				DEVELOPMENT_TEAM = B4S4333JDW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -307,7 +316,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Debug;
@@ -320,6 +329,7 @@
 				CODE_SIGN_ENTITLEMENTS = MySuperApps/MySuperApps.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MySuperApps/Preview Content\"";
 				DEVELOPMENT_TEAM = B4S4333JDW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -346,7 +356,7 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2,7";
 			};
 			name = Release;
@@ -374,6 +384,17 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		46A0A2482CE841C400641380 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.16.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		2CEEBF232BAFF11200D7FFE4 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -382,6 +403,11 @@
 		2CEEBF252BAFF4C500D7FFE4 /* SharedModels */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = SharedModels;
+		};
+		46A0A2492CE841C400641380 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 46A0A2482CE841C400641380 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
