@@ -46,7 +46,7 @@ public struct ClockFeature: Reducer, Sendable {
   }
   
   public enum Action: Equatable {
-    case onAppear
+    case startTimer
     case updateTime(Date)
   }
   
@@ -57,7 +57,7 @@ public struct ClockFeature: Reducer, Sendable {
   public var body: some ReducerOf<Self> {
     Reduce { state, action in
       switch action {
-      case .onAppear:
+      case .startTimer:
         return .run { send in
           for await _ in clock.timer(interval: .seconds(0.5)) {
             await send(.updateTime(.now))

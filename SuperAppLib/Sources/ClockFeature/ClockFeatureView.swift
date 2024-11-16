@@ -38,7 +38,7 @@ public struct ClockFeatureView: View {
         .font(.title.monospaced())
     }
     .onAppear {
-      store.send(.onAppear)
+      store.send(.startTimer)
     }
   }
 }
