@@ -41,9 +41,7 @@ public struct ClockFeature: Reducer, Sendable {
     }
     
     var timeText: String {
-//      isTickVisible ?
-      "\(hourString):\(minuteString):\(secondString)"
-//      : "\(hourString) \(minuteString) \(secondString)"
+      isTickVisible ? "\(hourString):\(minuteString):\(secondString)" : "\(hourString) \(minuteString) \(secondString)"
     }
   }
   

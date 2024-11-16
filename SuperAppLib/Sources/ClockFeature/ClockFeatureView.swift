@@ -35,7 +35,7 @@ public struct ClockFeatureView: View {
       .frame(width: 300, height: 300)
       .padding()
       Text(store.state.timeText)
-        .font(.title.monospacedDigit())
+        .font(.title.monospaced())
     }
     .onAppear {
       store.send(.onAppear)
