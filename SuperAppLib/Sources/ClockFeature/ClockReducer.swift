@@ -2,7 +2,7 @@ import ComposableArchitecture
 import Foundation
 
 @Reducer
-public struct ClockFeature: Reducer, Sendable {
+public struct ClockReducer: Reducer, Sendable {
   @ObservableState
   public struct State: Equatable {
     public init() {}

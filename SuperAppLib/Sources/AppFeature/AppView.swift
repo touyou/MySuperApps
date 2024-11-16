@@ -4,17 +4,17 @@ import SharedModels
 import ComposableArchitecture
 import ClockFeature
 
-public struct AppFeatureView: View {
-  @Bindable var store: StoreOf<AppFeature>
+public struct AppView: View {
+  @Bindable var store: StoreOf<AppReducer>
   
-  public init(store: StoreOf<AppFeature>) {
+  public init(store: StoreOf<AppReducer>) {
     self.store = store
   }
   
   public var body: some View {
     NavigationSplitView {
       List(selection: $store.destinationTag) {
-        ForEach(AppFeature.State.DestinationTag.allCases, id: \.self) { value in
+        ForEach(AppReducer.State.DestinationTag.allCases, id: \.self) { value in
           NavigationLink(value: value) {
             Text(value.rawValue.capitalized)
           }
@@ -26,7 +26,7 @@ public struct AppFeatureView: View {
 #endif
     } detail: {
       switch store.state.destinationTag {
-      case .clock: ClockFeatureView(store: store.scope(state: \.clock, action: \.clock))
+      case .clock: ClockView(store: store.scope(state: \.clock, action: \.clock))
       case .none: EmptyView()
       }
     }
@@ -34,5 +34,5 @@ public struct AppFeatureView: View {
 }
 
 #Preview {
-  //  AppFeatureView()
+    AppView(store: Store(initialState: AppReducer.State(), reducer: AppReducer.init))
 }

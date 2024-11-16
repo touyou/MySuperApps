@@ -28,7 +28,7 @@ struct MySuperAppsApp: App {
 
     var body: some Scene {
         WindowGroup {
-          AppFeatureView(store: Store(initialState: AppFeature.State(), reducer: AppFeature.init))
+          AppView(store: Store(initialState: AppReducer.State(), reducer: AppReducer.init))
         }
         .modelContainer(sharedModelContainer)
         .windowResizability(.contentSize)

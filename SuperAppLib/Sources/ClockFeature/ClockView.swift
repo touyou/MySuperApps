@@ -1,10 +1,10 @@
 import SwiftUI
 import ComposableArchitecture
 
-public struct ClockFeatureView: View {
-  @Bindable var store: StoreOf<ClockFeature>
+public struct ClockView: View {
+  @Bindable var store: StoreOf<ClockReducer>
   
-  public init(store: StoreOf<ClockFeature>) {
+  public init(store: StoreOf<ClockReducer>) {
     self.store = store
   }
   
@@ -44,7 +44,7 @@ public struct ClockFeatureView: View {
 }
 
 #Preview {
-  ClockFeatureView(
-    store: Store(initialState: ClockFeature.State(), reducer: ClockFeature.init)
+  ClockView(
+    store: Store(initialState: ClockReducer.State(), reducer: ClockReducer.init)
   )
 }

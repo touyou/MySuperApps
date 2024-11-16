@@ -3,12 +3,12 @@ import ClockFeature
 import SwiftUI
 
 @Reducer
-public struct AppFeature: Reducer {
+public struct AppReducer: Reducer {
   @ObservableState
   public struct State: Equatable {
     public init() {}
     
-    var clock = ClockFeature.State()
+    var clock = ClockReducer.State()
     
     var destinationTag: DestinationTag? = .clock
     
@@ -18,7 +18,7 @@ public struct AppFeature: Reducer {
   }
   
   public enum Action: BindableAction, Equatable {
-    case clock(ClockFeature.Action)
+    case clock(ClockReducer.Action)
     case binding(BindingAction<State>)
   }
   
@@ -26,6 +26,6 @@ public struct AppFeature: Reducer {
   
   public var body: some ReducerOf<Self> {
     BindingReducer()
-    Scope(state: \.clock, action: \.clock, child: ClockFeature.init)
+    Scope(state: \.clock, action: \.clock, child: ClockReducer.init)
   }
 }
