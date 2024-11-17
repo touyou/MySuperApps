@@ -10,7 +10,7 @@ public struct AppReducer: Reducer {
     
     var clock = ClockReducer.State()
     
-    var destinationTag: DestinationTag? = .clock
+    var destinationTag: DestinationTag? = nil
     
     enum DestinationTag: String, Equatable, CaseIterable {
       case clock = "Clock"
