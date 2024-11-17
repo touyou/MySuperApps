@@ -22,6 +22,17 @@
           }
         }
       }
+    },
+    "Particle Text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "パーティクルアニメ"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

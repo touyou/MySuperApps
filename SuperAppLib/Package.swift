@@ -25,12 +25,19 @@ let package = Package(
       name: "AppFeature",
       dependencies: [
         "ClockFeature",
+        "ParticleTextFeature",
         "SharedModels",
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ]
     ),
     .target(
       name: "ClockFeature",
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      ]
+    ),
+    .target(
+      name: "ParticleTextFeature",
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ]

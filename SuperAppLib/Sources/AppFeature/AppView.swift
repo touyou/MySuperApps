@@ -1,8 +1,7 @@
 import SwiftUI
-import SwiftData
-import SharedModels
 import ComposableArchitecture
 import ClockFeature
+import ParticleTextFeature
 
 public struct AppView: View {
   @Bindable var store: StoreOf<AppReducer>
@@ -27,6 +26,7 @@ public struct AppView: View {
     } detail: {
       switch store.state.destinationTag {
       case .clock: ClockView(store: store.scope(state: \.clock, action: \.clock))
+      case .particleText: ParticleTextView(store: store.scope(state: \.particleText, action: \.particleText))
       case .none: EmptyView()
       }
     }
