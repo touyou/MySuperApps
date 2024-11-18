@@ -55,48 +55,10 @@ public struct ParticleTextReducer: Reducer, Sendable {
         let size = state.size
         let particleCount = state.particleCount
         
-        return .run { @MainActor send in
-          // テキストをレンダリング
-          let renderer = ImageRenderer(content: Text(text)
-            .font(.system(size: 240, design: .rounded))
-            .bold())
+        return .run { send in
+          guard let particles = await generateParticles(text: text, size: size, particleCount: particleCount) else { return }
           
-          renderer.scale = 1.0
-          
-          guard let image = renderer.uiImage else { return }
-          guard let cgImage = image.cgImage else { return }
-          
-          let width = Int(image.size.width)
-          let height = Int(image.size.height)
-          
-          // ピクセルデータを抽出
-          guard
-            let pixelData = cgImage.dataProvider?.data,
-            let data = CFDataGetBytePtr(pixelData)
-          else { return }
-          
-          // キャンバスに対してテキストを中央に配置するためのオフセット
-          let offsetX = (size.width - CGFloat(width)) / 2
-          let offsetY = (size.height - CGFloat(height)) / 2
-          
-          let particles = (0..<particleCount).map { _ in
-            var x, y: Int
-            repeat {
-              x = Int.random(in: 0..<width)
-              y = Int.random(in: 0..<height)
-            // テキストの描画領域に(x,y)が置かれるまで乱択
-            } while data[((width * y) + x) * 4 + 3] < 128
-            
-            return Particle(
-              x: Double.random(in: -size.width...size.width * 2),
-              y: Double.random(in: 0...size.height * 2),
-              baseX: Double(x) + offsetX,
-              baseY: Double(y) + offsetY,
-              density: Double.random(in: 5...20)
-            )
-          }
-          
-          send(.setParticles(particles))
+          await send(.setParticles(particles))
         }
       case .setParticles(let particles):
         state.particles = particles
@@ -117,6 +79,54 @@ public struct ParticleTextReducer: Reducer, Sendable {
       case .binding(_):
         return .none
       }
+    }
+  }
+  
+  /// パーティクルの生成関数
+  @MainActor
+  private func generateParticles(
+    text: String,
+    size: CGSize,
+    particleCount: Int
+  ) -> [Particle]? {
+    // テキストをレンダリング
+    let renderer = ImageRenderer(content: Text(text)
+      .font(.system(size: 240, design: .rounded))
+      .bold())
+    
+    renderer.scale = 1.0
+    
+    guard let image = renderer.uiImage else { return nil }
+    guard let cgImage = image.cgImage else { return nil }
+    
+    let width = Int(image.size.width)
+    let height = Int(image.size.height)
+    
+    // ピクセルデータを抽出
+    guard
+      let pixelData = cgImage.dataProvider?.data,
+      let data = CFDataGetBytePtr(pixelData)
+    else { return nil }
+    
+    // キャンバスに対してテキストを中央に配置するためのオフセット
+    let offsetX = (size.width - CGFloat(width)) / 2
+    let offsetY = (size.height - CGFloat(height)) / 2
+    
+    return (0..<particleCount).map { _ in
+      var x, y: Int
+      repeat {
+        x = Int.random(in: 0..<width)
+        y = Int.random(in: 0..<height)
+        // テキストの描画領域に(x,y)が置かれるまで乱択
+      } while data[((width * y) + x) * 4 + 3] < 128
+      
+      return Particle(
+        x: Double.random(in: -size.width...size.width * 2),
+        y: Double.random(in: 0...size.height * 2),
+        baseX: Double(x) + offsetX,
+        baseY: Double(y) + offsetY,
+        density: Double.random(in: 5...20)
+      )
     }
   }
 }
