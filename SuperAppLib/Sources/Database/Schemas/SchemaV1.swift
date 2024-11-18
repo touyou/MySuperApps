@@ -1,7 +1,6 @@
 import Foundation
 import SwiftData
 import Dependencies
-import IdentifiedCollections
 
 public enum SchemaV1: VersionedSchema {
   public static var versionIdentifier: Schema.Version { .init(1, 0, 0) }
@@ -58,6 +57,8 @@ extension SchemaV1.Item: Equatable {
   }
 }
 
+extension SchemaV1.Item: Sendable {}
+
 extension SchemaV1 {
   @discardableResult
   static func makeItem(context: ModelContext, title: String) -> ItemModel {
@@ -76,7 +77,7 @@ extension SchemaV1 {
   
   static func itemFetchDescriptor(createdAtSort: SortOrder? = .forward, search: String = "") -> FetchDescriptor<ItemModel> {
     let sortBy: [SortDescriptor<ItemModel>] = Support.sortBy(.sortBy(\ItemModel.createdAt, order: createdAtSort))
-    var fetchDescriptor = FetchDescriptor(predicate: searchPredicate(search), sortBy: sortBy)
+    let fetchDescriptor = FetchDescriptor(predicate: searchPredicate(search), sortBy: sortBy)
     return fetchDescriptor
   }
   
@@ -85,7 +86,3 @@ extension SchemaV1 {
     try context.save()
   }
 }
-
-extension SchemaV1.Item: Sendable {}
-
-
