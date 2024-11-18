@@ -11,7 +11,7 @@
 		2CEEBF182BAFEEBC00D7FFE4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CEEBF172BAFEEBC00D7FFE4 /* Assets.xcassets */; };
 		2CEEBF1C2BAFEEBC00D7FFE4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CEEBF1B2BAFEEBC00D7FFE4 /* Preview Assets.xcassets */; };
 		2CEEBF242BAFF11200D7FFE4 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 2CEEBF232BAFF11200D7FFE4 /* AppFeature */; };
-		2CEEBF262BAFF4C500D7FFE4 /* SharedModels in Frameworks */ = {isa = PBXBuildFile; productRef = 2CEEBF252BAFF4C500D7FFE4 /* SharedModels */; };
+		46A0A24C2CEB85A300641380 /* Database in Frameworks */ = {isa = PBXBuildFile; productRef = 46A0A24B2CEB85A300641380 /* Database */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,7 +28,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CEEBF242BAFF11200D7FFE4 /* AppFeature in Frameworks */,
-				2CEEBF262BAFF4C500D7FFE4 /* SharedModels in Frameworks */,
+				46A0A24C2CEB85A300641380 /* Database in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +96,7 @@
 			name = MySuperApps;
 			packageProductDependencies = (
 				2CEEBF232BAFF11200D7FFE4 /* AppFeature */,
-				2CEEBF252BAFF4C500D7FFE4 /* SharedModels */,
+				46A0A24B2CEB85A300641380 /* Database */,
 			);
 			productName = MySuperApps;
 			productReference = 2CEEBF0E2BAFEEB900D7FFE4 /* MySuperApps.app */;
@@ -385,9 +385,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
 		};
-		2CEEBF252BAFF4C500D7FFE4 /* SharedModels */ = {
+		46A0A24B2CEB85A300641380 /* Database */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = SharedModels;
+			productName = Database;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -12,8 +12,8 @@ let package = Package(
       name: "AppFeature",
       targets: ["AppFeature"]),
     .library(
-      name: "SharedModels",
-      targets: ["SharedModels"]),
+      name: "Database",
+      targets: ["Database"]),
   ],
   dependencies: [
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.16.1"),
@@ -26,7 +26,7 @@ let package = Package(
       dependencies: [
         "ClockFeature",
         "ParticleTextFeature",
-        "SharedModels",
+        "Database",
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ]
     ),
@@ -43,9 +43,7 @@ let package = Package(
       ]
     ),
     .target(
-      name: "SharedModels"),
-    .target(
-      name: "SwiftDataClient",
+      name: "Database",
       dependencies: [
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ]
