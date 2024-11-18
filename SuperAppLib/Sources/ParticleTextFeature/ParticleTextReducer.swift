@@ -20,10 +20,10 @@ public struct ParticleTextReducer: Reducer, Sendable {
     case startTimer
     case updateParticles
     case createParticles
-    case updateParticlesValue([Particle])
-    case updateDragPosition(CGPoint?)
-    case updateDragVelocity(CGSize?)
-    case updateSize(CGSize)
+    case setParticles([Particle])
+    case setDragPosition(CGPoint?)
+    case setDragVelocity(CGSize?)
+    case setSize(CGSize)
     case binding(BindingAction<State>)
   }
   
@@ -37,7 +37,7 @@ public struct ParticleTextReducer: Reducer, Sendable {
       switch action {
       case .startTimer:
         return .run { send in
-          // NOTE: 1 / 120 sec = 8333.33... micro-sec
+          // NOTE: 120fps = 8333.33... /micro-sec
           for await _ in clock.timer(interval: .microseconds(8333)) {
             await send(.updateParticles)
           }
@@ -56,6 +56,7 @@ public struct ParticleTextReducer: Reducer, Sendable {
         let particleCount = state.particleCount
         
         return .run { @MainActor send in
+          // テキストをレンダリング
           let renderer = ImageRenderer(content: Text(text)
             .font(.system(size: 240, design: .rounded))
             .bold())
@@ -68,11 +69,13 @@ public struct ParticleTextReducer: Reducer, Sendable {
           let width = Int(image.size.width)
           let height = Int(image.size.height)
           
+          // ピクセルデータを抽出
           guard
             let pixelData = cgImage.dataProvider?.data,
             let data = CFDataGetBytePtr(pixelData)
           else { return }
           
+          // キャンバスに対してテキストを中央に配置するためのオフセット
           let offsetX = (size.width - CGFloat(width)) / 2
           let offsetY = (size.height - CGFloat(height)) / 2
           
@@ -81,6 +84,7 @@ public struct ParticleTextReducer: Reducer, Sendable {
             repeat {
               x = Int.random(in: 0..<width)
               y = Int.random(in: 0..<height)
+            // テキストの描画領域に(x,y)が置かれるまで乱択
             } while data[((width * y) + x) * 4 + 3] < 128
             
             return Particle(
@@ -92,18 +96,18 @@ public struct ParticleTextReducer: Reducer, Sendable {
             )
           }
           
-          send(.updateParticlesValue(particles))
+          send(.setParticles(particles))
         }
-      case .updateParticlesValue(let particles):
+      case .setParticles(let particles):
         state.particles = particles
         return .none
-      case .updateDragPosition(let dragPosition):
+      case .setDragPosition(let dragPosition):
         state.dragPosition = dragPosition
         return .none
-      case .updateDragVelocity(let dragVelocity):
+      case .setDragVelocity(let dragVelocity):
         state.dragVelocity = dragVelocity
         return .none
-      case .updateSize(let size):
+      case .setSize(let size):
         state.size = size
         return .none
       case .binding(\.text):
