@@ -54,7 +54,7 @@ public struct Particle: Equatable, Sendable {
       }
       
       let dragDistance = sqrt(dragDx * dragDx + dragDy * dragDy)
-      let dragForce = (200 - min(dragDistance, 200)) / 200 + velocityF * 0.00005
+      let dragForce = Double(200 - min(dragDistance, 200)) / 200 + velocityF * 0.00005
       
       x += dragDx * dragForce * 0.5
       y += dragDy * dragForce * 0.5

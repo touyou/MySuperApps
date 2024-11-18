@@ -45,8 +45,10 @@ public struct ParticleTextView: View {
   }
   
   private func triggerHapticFeedback() {
+    #if os(iOS)
     let impact = UIImpactFeedbackGenerator(style: .light)
     impact.impactOccurred()
+    #endif
   }
 }
 
